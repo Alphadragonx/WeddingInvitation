@@ -54,17 +54,16 @@ export const AudioController: React.FC<AudioControllerProps> = ({ lang }) => {
     };
 
     const cleanup = () => {
-      window.removeEventListener('pointerdown', handleFirstGesture);
-      window.removeEventListener('touchstart', handleFirstGesture);
-      window.removeEventListener('click', handleFirstGesture);
-      window.removeEventListener('scroll', handleFirstGesture);
-      window.removeEventListener('keydown', handleFirstGesture);
+      window.removeEventListener('pointerdown', handleFirstGesture, true);
+      window.removeEventListener('touchstart', handleFirstGesture, true);
+      window.removeEventListener('click', handleFirstGesture, true);
+      window.removeEventListener('keydown', handleFirstGesture, true);
     };
 
-    window.addEventListener('pointerdown', handleFirstGesture, { passive: true });
-    window.addEventListener('touchstart', handleFirstGesture, { passive: true });
-    window.addEventListener('click', handleFirstGesture, { passive: true });
-    window.addEventListener('keydown', handleFirstGesture, { passive: true });
+    window.addEventListener('pointerdown', handleFirstGesture, { capture: true, passive: true });
+    window.addEventListener('touchstart', handleFirstGesture, { capture: true, passive: true });
+    window.addEventListener('click', handleFirstGesture, { capture: true, passive: true });
+    window.addEventListener('keydown', handleFirstGesture, { capture: true, passive: true });
 
     return () => {
       cleanup();

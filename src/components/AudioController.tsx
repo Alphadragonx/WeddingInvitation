@@ -16,6 +16,7 @@ export const AudioController: React.FC<AudioControllerProps> = ({ lang }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(false);
+  const [autoplayBlocked, setAutoplayBlocked] = useState<boolean>(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -30,10 +31,12 @@ export const AudioController: React.FC<AudioControllerProps> = ({ lang }) => {
       playPromise
         .then(() => {
           setIsPlaying(true);
+          setAutoplayBlocked(false);
         })
         .catch(() => {
           // Autoplay blocked by browser policy without prior interaction
           setIsPlaying(false);
+          setAutoplayBlocked(true);
         });
     }
 
@@ -48,9 +51,13 @@ export const AudioController: React.FC<AudioControllerProps> = ({ lang }) => {
         .play()
         .then(() => {
           setIsPlaying(true);
+          setAutoplayBlocked(false);
           cleanup();
         })
-        .catch(() => setIsPlaying(false));
+        .catch(() => {
+          setIsPlaying(false);
+          setAutoplayBlocked(true);
+        });
     };
 
     const cleanup = () => {
@@ -82,7 +89,10 @@ export const AudioController: React.FC<AudioControllerProps> = ({ lang }) => {
       setIsMuted(false);
       audio
         .play()
-        .then(() => setIsPlaying(true))
+        .then(() => {
+          setIsPlaying(true);
+          setAutoplayBlocked(false);
+        })
         .catch(() => setIsPlaying(false));
     }
   };
@@ -111,6 +121,17 @@ export const AudioController: React.FC<AudioControllerProps> = ({ lang }) => {
         <source src={MP3_SRC} type="audio/mpeg" />
         <source src={WAV_SRC} type="audio/wav" />
       </audio>
+
+      {autoplayBlocked && !isPlaying && (
+        <button
+          type="button"
+          onClick={togglePlay}
+          className="fixed bottom-20 right-3 sm:bottom-24 sm:right-5 z-40 flex items-center gap-2 rounded-full bg-[#450D15] px-4 py-2.5 text-sm font-semibold text-white shadow-lg transition-transform hover:scale-105 active:scale-95"
+        >
+          <Play className="h-4 w-4" />
+          {isTe ? 'సంగీతం ప్రారంభించడానికి తాకండి' : 'Tap to start wedding music'}
+        </button>
+      )}
 
       {/* Floating Modern Aesthetic Audio & Action Pill (Bottom Right) */}
       <div className="fixed bottom-3 right-3 sm:bottom-5 sm:right-5 z-40 flex items-center gap-2">

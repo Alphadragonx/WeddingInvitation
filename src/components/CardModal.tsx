@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X, Printer, Share2, Check } from 'lucide-react';
 import { Language } from '../types/wedding';
 import { invitationData } from '../data/invitationData';
@@ -10,11 +10,28 @@ interface CardModalProps {
 }
 
 export const CardModal: React.FC<CardModalProps> = ({ isOpen, onClose, lang }) => {
-  if (!isOpen) return null;
-
   const [copied, setCopied] = useState(false);
   const isTe = lang === 'te';
   const data = isTe ? invitationData.telugu : invitationData.english;
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
 
   const handlePrint = () => {
     window.print();
@@ -70,17 +87,25 @@ Sri Adapa Manohara Rao & Smt. Durga couple and Relatives & Friends.`;
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-fadeIn">
-      <div className="relative w-full max-w-xl bg-white rounded-3xl shadow-xl border border-[#DDD3C3] p-5 sm:p-7 my-6 text-[#1C1715]">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="no-print absolute top-3.5 right-3.5 p-1.5 rounded-full bg-[#FAF8F5] hover:bg-[#F2ECE1] text-[#450D15] transition-colors cursor-pointer border border-[#EAE3D6]"
-          aria-label="Close"
-        >
-          <X className="w-4 h-4" />
-        </button>
+    <div
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 animate-fadeIn"
+      onClick={onClose}
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        className="fixed top-4 right-4 z-[60] p-2 rounded-full bg-white text-[#450D15] shadow-md border border-[#EAE3D6] hover:bg-[#F2ECE1] transition-colors cursor-pointer"
+        aria-label={isTe ? 'మూసివేయండి' : 'Close invitation'}
+      >
+        <X className="w-5 h-5" />
+      </button>
 
+      <div
+        className="relative w-full max-w-xl bg-white rounded-3xl shadow-xl border border-[#DDD3C3] p-5 sm:p-7 my-6 text-[#1C1715]"
+        role="dialog"
+        aria-modal="true"
+        onClick={(event) => event.stopPropagation()}
+      >
         {/* Action Bar (Top) */}
         <div className="no-print flex items-center justify-between gap-2 mb-5 pb-3 border-b border-[#F2ECE1]">
           <span className="text-[10px] uppercase tracking-widest font-bold text-[#9E7B3B]">

@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --canvas: #FAF8F5;
+    --surface: #FFFFFF;
+    --surface-subtle: #F5F1E9;
+    --wine-primary: #450D15;
+    --wine-deep: #32080E;
+    --wine-soft: #631722;
+    --champagne: #9E7B3B;
+    --champagne-light: #F7F3EA;
+    --champagne-border: #E5DCCF;
+    --text-primary: #1C1715;
+    --text-secondary: #5C504A;
+    --text-muted: #82756E;
+    --border-subtle: #EAE3D6;
+    --border-light: #F0EAE0;
+  }
+
+  body {
+    background-color: var(--canvas);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Telugu', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+.font-telugu-serif {
+  font-family: 'Noto Serif Telugu', Georgia, serif;
+}
+
+.font-telugu-sans {
+  font-family: 'Noto Sans Telugu', system-ui, sans-serif;
+}
+
+.font-royal-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+/* Subtle modern champagne gradient */
+.champagne-gradient-text {
+  background: linear-gradient(135deg, #7C5F2B 0%, #A68249 50%, #82632D 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.wine-gradient-text {
+  background: linear-gradient(135deg, #32080E 0%, #4D0E17 55%, #6A1523 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Modern luxury card with clean shadow */
+.aesthetic-card {
+  background: #FFFFFF;
+  border: 1px solid #EAE3D6;
+  box-shadow: 0 4px 20px -2px rgba(69, 13, 21, 0.03), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+}
+
+.aesthetic-card-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.aesthetic-card-hover:hover {
+  border-color: #D8CEBD;
+  box-shadow: 0 12px 32px -4px rgba(69, 13, 21, 0.06), 0 2px 6px 0 rgba(0, 0, 0, 0.03);
+  transform: translateY(-2px);
+}
+
+/* Equalizer keyframe animations */
+@keyframes barPulse1 {
+  0%, 100% { height: 4px; }
+  50% { height: 14px; }
+}
+@keyframes barPulse2 {
+  0%, 100% { height: 12px; }
+  50% { height: 5px; }
+}
+@keyframes barPulse3 {
+  0%, 100% { height: 6px; }
+  50% { height: 15px; }
+}
+
+.animate-musicBar1 {
+  animation: barPulse1 0.75s ease-in-out infinite;
+}
+.animate-musicBar2 {
+  animation: barPulse2 0.65s ease-in-out infinite;
+}
+.animate-musicBar3 {
+  animation: barPulse3 0.85s ease-in-out infinite;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+/* Smooth print style for wedding invitation card */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}

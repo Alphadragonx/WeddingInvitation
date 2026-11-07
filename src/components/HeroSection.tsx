@@ -100,7 +100,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang, onOpenCard }) =>
                   {data.bride.name}
                 </h2>
                 <p className="text-xs sm:text-sm text-[#5C504A] mt-1.5 font-medium">
-                  {isTe ? 'శ్రీమతి నాగలక్ష్మి & కీ.శే. బింకం మురళీకృష్ణ గార్ల పుత్రిక' : 'D/o Late Sri Binkam Murali Krishna & Smt. Nagalakshmi'}
+                  {isTe ? 'శ్రీమతి నాగ శైలజ & కీ.శే. బింకం మురళీకృష్ణ గార్ల పుత్రిక' : 'D/o Late Sri Binkam Murali Krishna & Smt. Naga Sailaja'}
                 </p>
                 <p className="text-[11px] text-[#8C6D37] mt-0.5">
                   {isTe ? 'జీడిమెట్ల, సుభాష్ నగర్, తెలంగాణ' : 'Subhash Nagar, Jeedimetla, Telangana'}

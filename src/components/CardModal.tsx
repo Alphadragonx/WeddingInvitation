@@ -46,7 +46,7 @@ export const CardModal: React.FC<CardModalProps> = ({ isOpen, onClose, lang }) =
 వివాహ మహోత్సవ ఆహ్వాన పత్రిక
 
 వధువు: చి.ల.సౌ. శ్రావణి
-(కీ.శే. బింకం మురళీకృష్ణ, శ్రీమతి నాగలక్ష్మి గార్ల పుత్రిక - జీడిమెట్ల, తెలంగాణ)
+(కీ.శే. బింకం మురళీకృష్ణ, శ్రీమతి నాగ శైలజ గార్ల పుత్రిక - జీడిమెట్ల, తెలంగాణ)
 
 వరుడు: చి. ఫణీంద్ర కుమార్
 (మహారాజశ్రీ కొల్లి నరసింహారావు, శ్రీమతి లక్ష్మీ నాంచారమ్మ దంపతుల కనిష్ఠ కుమారుడు - ఐనంపూడి, కృష్ణా జిల్లా)
@@ -64,7 +64,7 @@ With the divine blessings of Sri Rukmini Satyabhama Sametha Sri Venugopala Swamy
 Grand Wedding Invitation
 
 Bride: Chi. La. Sow. Sravani
-(D/o Late Sri Binkam Murali Krishna & Smt. Nagalakshmi - Jeedimetla, Telangana)
+(D/o Late Sri Binkam Murali Krishna & Smt. Naga Sailaja - Jeedimetla, Telangana)
 
 Groom: Chi. Phaneendra Kumar
 (S/o Maharajashri Kolli Narasimha Rao & Smt. Lakshmi Nancharamma - Ainampudi, Krishna Dist.)

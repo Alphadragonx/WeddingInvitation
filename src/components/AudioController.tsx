@@ -37,19 +37,20 @@ export const AudioController: React.FC<AudioControllerProps> = ({ lang }) => {
         });
     }
 
-    // Immediately trigger playback on the very first user interaction (touch, tap, scroll)
+    // Retry autoplay when the browser next allows playback from a user gesture.
     const handleFirstGesture = () => {
-      if (audio && audio.paused) {
-        audio
-          .play()
-          .then(() => {
-            setIsPlaying(true);
-          })
-          .catch(() => {
-            // ignore
-          });
+      if (!audio.paused) {
+        cleanup();
+        return;
       }
-      cleanup();
+
+      audio
+        .play()
+        .then(() => {
+          setIsPlaying(true);
+          cleanup();
+        })
+        .catch(() => setIsPlaying(false));
     };
 
     const cleanup = () => {
@@ -63,7 +64,6 @@ export const AudioController: React.FC<AudioControllerProps> = ({ lang }) => {
     window.addEventListener('pointerdown', handleFirstGesture, { passive: true });
     window.addEventListener('touchstart', handleFirstGesture, { passive: true });
     window.addEventListener('click', handleFirstGesture, { passive: true });
-    window.addEventListener('scroll', handleFirstGesture, { passive: true });
     window.addEventListener('keydown', handleFirstGesture, { passive: true });
 
     return () => {

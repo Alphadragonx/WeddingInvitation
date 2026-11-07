@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Calendar, Sparkles, FileText, MapPin, Heart } from 'lucide-react';
 import { Language } from '../types/wedding';
 import { invitationData } from '../data/invitationData';
@@ -14,6 +14,7 @@ interface HeroSectionProps {
 export const HeroSection: React.FC<HeroSectionProps> = ({ lang, onOpenCard }) => {
   const isTe = lang === 'te';
   const data = isTe ? invitationData.telugu : invitationData.english;
+  const [isCoupleMessageOpen, setIsCoupleMessageOpen] = useState(false);
 
   const handleShower = () => {
     triggerAkshathaluShower();
@@ -108,9 +109,16 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang, onOpenCard }) =>
 
               {/* Minimalist Central Sacred Connector */}
               <div className="shrink-0 flex flex-col items-center justify-center my-0.5">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#FAF8F5] border border-[#DDD3C3] text-[#450D15] flex items-center justify-center shadow-2xs">
-                  <Heart className="w-4 h-4 text-[#450D15]" />
-                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsCoupleMessageOpen((isOpen) => !isOpen)}
+                  aria-expanded={isCoupleMessageOpen}
+                  aria-controls="couple-message"
+                  aria-label={isTe ? 'వధూవరుల ప్రేమ సందేశం' : 'Read a message about the couple'}
+                  className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#FFF5F5] border border-[#F2C7CD] text-[#C62845] flex items-center justify-center shadow-2xs transition-transform hover:scale-110 active:scale-95 cursor-pointer"
+                >
+                  <Heart className="w-5 h-5 fill-current animate-heartbeat motion-reduce:animate-none" />
+                </button>
                 <span className="text-[10px] font-semibold text-[#9E7B3B] mt-1.5 uppercase tracking-widest">
                   {isTe ? 'పరిణయం' : 'Weds'}
                 </span>
@@ -135,6 +143,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ lang, onOpenCard }) =>
                 </p>
               </div>
             </div>
+
+            {isCoupleMessageOpen && (
+              <div
+                id="couple-message"
+                className="mt-5 rounded-2xl border border-[#F2D9DC] bg-[#FFF8F8] px-4 py-3 text-center animate-fadeIn"
+              >
+                <Heart className="mx-auto mb-1.5 h-4 w-4 fill-current text-[#C62845]" aria-hidden="true" />
+                <p className="font-telugu-serif text-xs sm:text-sm text-[#7D2334]">
+                  {isTe
+                    ? 'రెండు మనసులు, రెండు కుటుంబాలు ఒకే ప్రేమబంధంతో ఒక్కటవుతున్న శుభసందర్భం.'
+                    : 'Two hearts and two families, joined together in one beautiful bond of love.'}
+                </p>
+              </div>
+            )}
 
             {/* Clean metadata badge line */}
             <div className="mt-7 pt-5 border-t border-[#F2ECE1] flex flex-wrap items-center justify-center gap-2 text-xs text-[#5C504A]">

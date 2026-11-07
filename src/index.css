@@ -110,6 +110,19 @@
   animation: spinSlow 20s linear infinite;
 }
 
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.2); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  60% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartbeat 1.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
 /* Smooth print style for wedding invitation card */
 @media print {
   body {

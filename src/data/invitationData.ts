@@ -1,10 +1,16 @@
+import ganeshaImage from '../assets/images/ganesha_golden_tanjore_1794046900973.jpg';
+import sitaRamaImage from '../assets/images/sita_rama_kalyanam_art_1794046882024.jpg';
+import thalambraluImage from '../assets/images/traditional_thalambralu_couple_1794045704111.jpg';
+import venugopalaImage from '../assets/images/venugopala_swamy_blessing_1794045704966.jpg';
+import weddingMandapImage from '../assets/images/wedding_mandap_backdrop_1794045704082.jpg';
+
 export const invitationData = {
   images: {
-    mandap: '/src/assets/images/wedding_mandap_backdrop_1794045704082.jpg',
-    thalambralu: '/src/assets/images/traditional_thalambralu_couple_1794045704111.jpg',
-    venugopala: '/src/assets/images/venugopala_swamy_blessing_1794045704966.jpg',
-    sitaRama: '/src/assets/images/sita_rama_kalyanam_art_1794046882024.jpg',
-    ganesha: '/src/assets/images/ganesha_golden_tanjore_1794046900973.jpg',
+    mandap: weddingMandapImage,
+    thalambralu: thalambraluImage,
+    venugopala: venugopalaImage,
+    sitaRama: sitaRamaImage,
+    ganesha: ganeshaImage,
   },
   weddingDateISO: '2026-11-21T20:52:00+05:30',
   googleMapsUrl:

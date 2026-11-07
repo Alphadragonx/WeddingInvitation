@@ -18,3 +18,11 @@ View your app in AI Studio: https://ai.studio/apps/6b9f676e-5fd8-49f8-963d-39d99
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Deploy to GitHub Pages
+
+The `main` branch is deployed to GitHub Pages by the workflow in
+`.github/workflows/deploy.yml`. In the repository settings, set **Pages →
+Build and deployment → Source** to **GitHub Actions**. Each push to `main`
+builds the site with the repository's `/WeddingInvitation/` URL prefix and
+publishes the generated `dist` directory.

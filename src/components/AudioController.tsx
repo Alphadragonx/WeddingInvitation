@@ -7,9 +7,9 @@ interface AudioControllerProps {
   lang: Language;
 }
 
-const MP3_SRC = '/assets/aistudio/seetha_kalyanam.mp3';
+const MP3_SRC = `${import.meta.env.BASE_URL}assets/aistudio/seetha_kalyanam.mp3`;
 const WAV_SRC =
-  '/assets/aistudio/Seetha_Kalyanam_Lyrical_Ranarangam_Songs_Sharwanand__Kalyani_Priyadarshan_Sudheer_Varma_-_Aditya_Music__128k__2ee2841b.wav';
+  `${import.meta.env.BASE_URL}assets/aistudio/Seetha_Kalyanam_Lyrical_Ranarangam_Songs_Sharwanand__Kalyani_Priyadarshan_Sudheer_Varma_-_Aditya_Music__128k__2ee2841b.wav`;
 
 export const AudioController: React.FC<AudioControllerProps> = ({ lang }) => {
   const isTe = lang === 'te';

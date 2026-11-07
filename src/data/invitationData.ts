@@ -1,13 +1,13 @@
 import ganeshaImage from '../assets/images/ganesha_golden_tanjore_1794046900973.jpg';
 import sitaRamaImage from '../assets/images/sita_rama_kalyanam_art_1794046882024.jpg';
-import thalambraluImage from '../assets/images/traditional_thalambralu_couple_1794045704111.jpg';
 import venugopalaImage from '../assets/images/venugopala_swamy_blessing_1794045704966.jpg';
 import weddingMandapImage from '../assets/images/wedding_mandap_backdrop_1794045704082.jpg';
+import weddingCoupleImage from '../assets/images/wedding_couple_illustration.png';
 
 export const invitationData = {
   images: {
     mandap: weddingMandapImage,
-    thalambralu: thalambraluImage,
+    couple: weddingCoupleImage,
     venugopala: venugopalaImage,
     sitaRama: sitaRamaImage,
     ganesha: ganeshaImage,

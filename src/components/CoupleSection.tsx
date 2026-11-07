@@ -36,7 +36,7 @@ export const CoupleSection: React.FC<CoupleSectionProps> = ({ lang }) => {
             {/* Image */}
             <div className="lg:col-span-7 relative min-h-[280px] sm:min-h-[360px]">
               <img
-                src={invitationData.images.thalambralu}
+                src={invitationData.images.couple}
                 alt={isTe ? 'తలంబ్రాల మహోత్సవం - పవిత్ర వేడుక' : 'Thalambralu - Auspicious Wedding Ritual'}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
